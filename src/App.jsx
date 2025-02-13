@@ -1,28 +1,42 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Boton from './components/Boton';
+import List from './components/List';
+import Add from './components/Add';
 
 function App() {
+  const items = [
+    {id: 1, name: 'item1', price: 1},
+    {id: 2, name: 'item2', price: 2},
+    {id: 3, name: 'item3', price: 3}
+  ];
+  let [count, setCount] = useState(0);
+  const sum = () => {
+    setCount(count + 1);
+    console.log(count);
+  }
+  const resta = () => {
+    setCount(count - 1);
+    console.log(count);
+  }
   const name = 'Alaia Macías';
   const saludar = <h1>Hola, soy {name}</h1>;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>Hello World! {22/2 + 7}</p>
-        <p>{saludar}</p>
-        <h2>It is {n}</h2>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      {count}
+      <Boton  name={"Add"}
+      click={sum} />
+      <Boton name={"Resta"}
+      click={resta} />
+      <Boton name={"Mensaje"}
+      click={()=> alert("Hello world! El conteo es " + {count})} />
+      <Add />
+      <List items={items}/>
+      <Footer />
     </div>
   );
 }
