@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import Header from './components/Header';
@@ -22,8 +21,10 @@ function App() {
     setCount(count - 1);
     console.log(count);
   }
-  const name = 'Alaia Macías';
-  const saludar = <h1>Hola, soy {name}</h1>;
+  const add = (item) => {
+    item.id = items.length + 1;
+    items.push(item);
+  };
   return (
     <div>
       <Header />
@@ -34,7 +35,7 @@ function App() {
       click={resta} />
       <Boton name={"Mensaje"}
       click={()=> alert("Hello world! El conteo es " + {count})} />
-      <Add />
+      <Add add={add}/>
       <List items={items}/>
       <Footer />
     </div>
