@@ -27,17 +27,27 @@ function App() {
   };
   return (
     <div>
-      <Header />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+
+        <Footer />
+      </BrowserRouter>
+      {/* <Header />
       {count}
       <Boton  name={"Add"}
       click={sum} />
       <Boton name={"Resta"}
       click={resta} />
       <Boton name={"Mensaje"}
-      click={()=> alert("Hello world! El conteo es " + {count})} />
+      click={()=> alert("Hello world! El conteo es " + {count})} /> */}
       <Add add={add}/>
       <List items={items}/>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
